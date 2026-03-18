@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(to right, #fe5b4fde, #a2e7eb);
+
+    display: flex;
+    justify-content: center;   /* centra horizontalmente */
+    align-items: flex-start;       /* centra verticalmente */
+    height: 100px;
+}
+
+#General {
+
+}
+
+
+#Formulario {
+    display: flex;
+    box-sizing: border-box;
+    border:1px solid black;
+    padding: 20px;
+    margin-top: 100px;
+    
+}
+
+#Contacto {
+    margin-top: auto;
+    text-align: left;
+}
