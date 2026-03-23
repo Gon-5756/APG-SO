@@ -35,13 +35,12 @@ break;
 
     case 'login':
     $nombre = $_POST["usuario"];
-    $contrasenia = $_POST["contraseña"];
-    $verificacion = $_POST["verificacion"];
+    $contrasenia = $_POST["contrasenia"];
     $mail = $_POST["mail"];
 
 
 
-    if ($nombre == "Pepe" && $contrasenia == "12345678" && $verificacion == $contrasenia && $mail == "pepe@gmail.com") {
+    if ($nombre == "Pepe" && $contrasenia == "12345678" && $mail == "pepe@gmail.com") {
 
         $_SESSION['Session']=[
             "usuario" => $nombre,
@@ -49,14 +48,14 @@ break;
         ];
 
     header("Location: ../Vista/perfil.php");
-exit();
+    exit();
 
     } else{
         header("Location: ../Vista/login.php");
         exit();
     }
 break;
-}
 
+}
 
 ?>

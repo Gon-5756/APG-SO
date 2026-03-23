@@ -14,13 +14,13 @@
         <input type="hidden" name="accion" value="login">
 
         <label for="Usuario">Nombre de usuario:</label><br>
-        <input type="text" id="Usuario" name="Usuario" value=""><br><br>
+        <input type="text" id="usuario" name="usuario" value=""><br><br>
 
         <label for="mail">E-Mail:</label><br>
         <input type="email" id="mail" name="mail" value=""><br><br>
         
         <label for="Contraseña">Contraseña:</label><br>
-        <input type="password" id="Contraseña" name="Contraseña" value=""><br><br>
+        <input type="password" id="contrasenia" name="contrasenia" value=""><br><br>
 
 
         <input type="submit" value="Enviar">
