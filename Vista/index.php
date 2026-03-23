@@ -11,20 +11,22 @@
     <div id="Formulario">
 
     <form action="../Controlador/redireccionador.php" method="post">
+        <input type="hidden" name="accion" value="register">
+
         <label for="Usuario">Nombre de usuario:</label><br>
-        <input type="text" id="Usuario" name="Usuario" value=""><br><br>
+        <input type="text" id="usuario" name="usuario" value=""><br><br>
 
         <label for="mail">E-Mail:</label><br>
         <input type="email" id="mail" name="mail" value=""><br><br>
         
         <label for="Contraseña">Contraseña:</label><br>
-        <input type="password" id="Contraseña" name="Contraseña" value=""><br><br>
+        <input type="password" id="contrasenia" name="contrasenia" value=""><br><br>
 
         <label for="Verificacion">Verificar Contraseña:</label><br>
-        <input type="password" id="Verificacion" name="Verificacion" value=""><br><br>
+        <input type="password" id="verificacion" name="verificacion" value=""><br><br>
 
 
-        <input type="submit" value="Enviar">
+        <input type="submit" value="enviar">
     </form>
     <div id="Contacto">
     <h1>

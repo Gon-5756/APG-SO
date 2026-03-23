@@ -1,26 +1,62 @@
 <?php
+
 session_start();
-$nombre = $_POST["Usuario"];
-$contrasenia = $_POST["Contraseña"];
-$verificacion = $_POST["Verificacion"];
-$mail = $_POST["mail"];
 
 
 
-if ($nombre == "Pepe" && $contrasenia == "12345678" && $verificacion == $contrasenia && $mail == "pepe@gmail.com") {
+$accion = $_POST["accion"];
+var_dump($accion);
 
-    $_SESSION['Session']=[
-    "Usuario" => $nombre,
-    "mail" => $mail
-];
+switch($accion){
+        case 'register':
+    $nombre = $_POST["usuario"];
+    $contrasenia = $_POST["contrasenia"];
+    $verificacion = $_POST["verificacion"];
+    $mail = $_POST["mail"];
+
+
+
+    if ($contrasenia == "12345678" && $verificacion == $contrasenia) {
+
+        $_SESSION['Session']=[
+            "usuario" => $nombre,
+            "mail" => $mail
+        ];
+
+    header("Location: ../Vista/login.php");
+exit();
+
+    } else{
+        header("Location: ../Vista/index.php");
+        exit();
+    }
+
+break;
+
+    case 'login':
+    $nombre = $_POST["usuario"];
+    $contrasenia = $_POST["contraseña"];
+    $verificacion = $_POST["verificacion"];
+    $mail = $_POST["mail"];
+
+
+
+    if ($nombre == "Pepe" && $contrasenia == "12345678" && $verificacion == $contrasenia && $mail == "pepe@gmail.com") {
+
+        $_SESSION['Session']=[
+            "usuario" => $nombre,
+            "mail" => $mail
+        ];
 
     header("Location: ../Vista/perfil.php");
 exit();
 
-} else{
-        header("Location: ../Vista/index.php");
+    } else{
+        header("Location: ../Vista/login.php");
         exit();
-
+    }
+break;
 }
+
 
 ?>

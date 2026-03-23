@@ -11,6 +11,8 @@
     <div id="Formulario">
 
     <form action="../Controlador/redireccionador.php" method="post">
+        <input type="hidden" name="accion" value="login">
+
         <label for="Usuario">Nombre de usuario:</label><br>
         <input type="text" id="Usuario" name="Usuario" value=""><br><br>
 
