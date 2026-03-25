@@ -10,7 +10,7 @@
 <div id="General">
     <div id="Formulario">
 
-    <form action="../Controlador/redireccionador.php" method="post">
+    <form action="../Controlador/registro.php" method="post">
         <input type="hidden" name="accion" value="register">
 
         <label for="Usuario">Nombre de usuario:</label><br>
