@@ -13,7 +13,7 @@
     <form action="../Controlador/registro.php" method="post">
         <input type="hidden" name="accion" value="register">
 
-        <label for="Usuario">Nombre de usuario:</label><br>
+        <label for="usuario">Nombre de usuario:</label><br>
         <input type="text" id="usuario" name="usuario" value=""><br><br>
 
         <label for="mail">E-Mail:</label><br>

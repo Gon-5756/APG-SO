@@ -4,8 +4,6 @@ session_start();
 
 
 
-
-    case 'login':
     $nombre = $_POST["usuario"];
     $contrasenia = $_POST["contrasenia"];
     $mail = $_POST["mail"];

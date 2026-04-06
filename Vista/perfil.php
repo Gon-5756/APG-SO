@@ -1,4 +1,5 @@
-<?php session_start();
+<?php
+session_start();
 if(!isset($_SESSION['Session'])) {
     header("Location: index.php");
     exit();
@@ -13,7 +14,12 @@ if(!isset($_SESSION['Session'])) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<h1> <?php echo $_SESSION['Session']['Usuario']; ?> </h1>
-    
+<h1> <?php echo $_SESSION['Session']['usuario']; ?> </h1>
+<div>
+    <form action="../Vista/imagenes_perfil">
+            <span style="font-size:20px">Tu foto de perfil:</span>
+            <input type="file" name="uploadedFile" />
+            </div>
+            </form>
 </body>
 </html>
