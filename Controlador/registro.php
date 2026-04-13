@@ -1,4 +1,5 @@
 <?php
+
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -14,29 +15,33 @@ die("Connection failed: " . $conn->connect_error);
 
 
 
+session_start();
+
+		$nombre = $_POST["usuario"];
+		$contrasenia = $_POST["contrasenia"];
+		$verificacion = $_POST["verificacion"];
+		$mail = $_POST["mail"];
+
 // Prepare and bind
-//    if ($contrasenia == "12345678" && $verificacion == $contrasenia) {
+if ($contrasenia == $verificacion ) {
 
 
 		$stmt = $conn->prepare("INSERT INTO usuario (usr_name, usr_pass , usr_email, usr_imagen) VALUES (?, ?, ?, ?)");
 		if (!$stmt) {
     die("Error en prepare(): " . $conn->error);
 }
-		$stmt->bind_param("ssss", $nombre, $contrasenia, $mail, $imagen);
-
-		
-
-// Set parameters and execute
-
-		$nombre = $_POST["usuario"];
-		$contrasenia = $_POST["contrasenia"];
-		$verificacion = $_POST["verificacion"];
-		$mail = $_POST["mail"];
-		$stmt->execute();
-
 
     header("Location: ../Vista/login.php");
 exit();
+    }
+    $stmt->bind_param("ssss", $nombre, $contrasenia, $mail, $imagen);
+
+
+// Set parameters and execute
+
+
+        $stmt->execute();
+
 
    // } //else{
         //header("Location: ../Vista/index.php");
