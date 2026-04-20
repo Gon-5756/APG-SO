@@ -7,10 +7,10 @@ session_start();
     $nombre = $_POST["usuario"];
     $contrasenia = $_POST["contrasenia"];
     $mail = $_POST["mail"];
+    $verificacion = $_POST["verificacion"];
 
 
-
-    if ($nombre == "Pepe" && $contrasenia == "12345678" && $mail == "pepe@gmail.com") {
+    if (empty($contrasenia) || empty($mail)) {
 
         $_SESSION['Session']=[
             "usuario" => $nombre,

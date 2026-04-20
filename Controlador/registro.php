@@ -22,18 +22,29 @@ session_start();
 		$verificacion = $_POST["verificacion"];
 		$mail = $_POST["mail"];
 
-// Prepare and bind
-if ($contrasenia == $verificacion ) {
+
+if (empty($nombre) || empty($contrasenia) || empty($mail)) {
+    echo "¡Completa todos los campos!";
+    header("Location: ../Vista/index.php");
+    exit();
 
 
+    } else{
+        if (strlen($contrasenia)<8){
+            echo"¡La contraseña debe tener 8 caracteres minimo!";
+            }else if($contrasenia != $verificacion){
+                echo "¡Contraseña diferente!";
+            }
+        //Prepare and bind
 		$stmt = $conn->prepare("INSERT INTO usuario (usr_name, usr_pass , usr_email, usr_imagen) VALUES (?, ?, ?, ?)");
-		if (!$stmt) {
-    die("Error en prepare(): " . $conn->error);
-}
+	if (!$stmt) {
+        die("Error en prepare(): " . $conn->error);
+            }
 
     header("Location: ../Vista/login.php");
-exit();
+    exit();
     }
+
     $stmt->bind_param("ssss", $nombre, $contrasenia, $mail, $imagen);
 
 
@@ -43,11 +54,7 @@ exit();
         $stmt->execute();
 
 
-   // } //else{
-        //header("Location: ../Vista/index.php");
-        //exit();
-    //}
-
+    
 	// Make query
 	$query = "SELECT * FROM usuario";
 	$result = mysqli_query($conn, $query);
