@@ -76,7 +76,7 @@
                                 <span style="font-size:20px">Tu foto de perfil:</span>
                                 <input type="file" name="uploadedFile"
                                 class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                            <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                            <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-white>
                             </div>
 
                             </div>
@@ -94,15 +94,16 @@
                 Información
                 de contacto</p>
             <div class="flex gap-4 items-center">
-                <h2 class="text-white">
+                <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white>
                     Mail: APG@Viajes.com
                 </h2>
 
-                <a class="text-white" href="https://www.youtube.com/@MoMoLaDinastia" target="_blank">
+                <a class="block mb-2 text-sm font-medium text-gray-900 dark:text-white 
+                href="https://www.youtube.com/@MoMoLaDinastia" target="_blank">
                     Youtube
                 </a>
 
-                <a class="text-white" href="https://www.instagram.com/gero.momo/" target="_blank">
+                <a class=""block mb-2 text-sm font-medium text-gray-900 dark:text-white" href="https://www.instagram.com/gero.momo/" target="_blank">
                     Instagram
                 </a>
             </div>
