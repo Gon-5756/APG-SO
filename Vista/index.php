@@ -28,7 +28,10 @@
                         class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                         Registro
                     </h1>
-                    <form class="space-y-4 md:space-y-6" action="../Controlador/registro.php" method="post">
+                    <form class="space-y-4 md:space-y-6" 
+                    action="../Controlador/registro.php" 
+                    method="post" 
+                    enctype="multipart/form-data">
                         <input type="hidden" name="accion" value="register">
                         <div>
                             <label for="usuario"
@@ -49,7 +52,7 @@
                         </div>
                         <div>
                             <label for="Contraseña"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contraseña</label>
                             <input type="password" id="contrasenia" name="contrasenia" placeholder="••••••••" value=""
                                 class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 required=""><br><br>
@@ -57,8 +60,8 @@
 
                         <div>
                             <label for="verificacion"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Verificar
-                            Contraseña</label>
+                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Verificar
+                                Contraseña</label>
                             <input type="password" id="verificacion" name="verificacion" placeholder="••••••••" value=""
                                 class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                 required=""><br><br>
@@ -68,25 +71,25 @@
                             <div class="flex items-start">
                                 <div class="flex items-center h-5">
 
-                                    </div>
-
                                 </div>
+
+                            </div>
 
                             <div>
                                 <span style="font-size:20px">Tu foto de perfil:</span>
                                 <input type="file" name="uploadedFile"
-                                class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                            <p class="block mb-2 text-sm font-medium text-gray-900 dark:text-white>
+                                    class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                             </div>
 
-                            </div>
-                            <input type="submit" value="Registrarse"
-                                class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                            <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-                                Ya tiene cuenta? Inicie sesion <a href="#"
-                                    class="font-medium text-primary-600 hover:underline dark:text-primary-500">Inicio de
-                                    sesion</a>
-                            </p>
+                        </div>
+                        <input type="submit" value="Registrarse"
+                            class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                        <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                            Ya tiene cuenta? Inicie sesion <a href="#"
+                                class="font-medium text-primary-600 hover:underline dark:text-primary-500">Inicio de
+                                sesion</a>
+                        </p>
                     </form>
                 </div>
             </div>
@@ -94,16 +97,15 @@
                 Información
                 de contacto</p>
             <div class="flex gap-4 items-center">
-                <h2 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white>
+                <h2 class="text-white">
                     Mail: APG@Viajes.com
                 </h2>
 
-                <a class="block mb-2 text-sm font-medium text-gray-900 dark:text-white 
-                href="https://www.youtube.com/@MoMoLaDinastia" target="_blank">
+                <a class="text-white" href="https://www.youtube.com/@MoMoLaDinastia" target="_blank">
                     Youtube
                 </a>
 
-                <a class=""block mb-2 text-sm font-medium text-gray-900 dark:text-white" href="https://www.instagram.com/gero.momo/" target="_blank">
+                <a class="text-white" href="https://www.instagram.com/gero.momo/" target="_blank">
                     Instagram
                 </a>
             </div>

@@ -1,98 +1,69 @@
 <?php
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "base_usuarios";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-die("Connection failed: " . $conn->connect_error);
-}
-
-
-
 session_start();
 
-		$nombre = $_POST["usuario"];
-		$contrasenia = $_POST["contrasenia"];
-		$verificacion = $_POST["verificacion"];
-		$mail = $_POST["mail"];
+// Conexión
+$conn = new mysqli("localhost", "root", "", "base_usuarios");
+if ($conn->connect_error) {
+    die("Error de conexión: " . $conn->connect_error);
+}
 
+// Datos
+$nombre = $_POST["usuario"] ?? '';
+$contrasenia = $_POST["contrasenia"] ?? '';
+$verificacion = $_POST["verificacion"] ?? '';
+$mail = $_POST["mail"] ?? '';
 
+// Validaciones
 if (empty($nombre) || empty($contrasenia) || empty($mail)) {
-    echo "¡Completa todos los campos!";
+    $_SESSION['error'] = "Completa todos los campos";
     header("Location: ../Vista/index.php");
     exit();
-
-
-    } else{
-        if (strlen($contrasenia)<8){
-            echo"¡La contraseña debe tener 8 caracteres minimo!";
-            }else if($contrasenia != $verificacion){
-                echo "¡Contraseña diferente!";
-            }
-        //Prepare and bind
-		$stmt = $conn->prepare("INSERT INTO usuario (usr_name, usr_pass , usr_email, usr_imagen) VALUES (?, ?, ?, ?)");
-	if (!$stmt) {
-        die("Error en prepare(): " . $conn->error);
-            }
-
-    header("Location: ../Vista/login.php");
-    exit();
-    }
-
-    $stmt->bind_param("ssss", $nombre, $contrasenia, $mail, $imagen);
-
-
-// Set parameters and execute
-
-
-        $stmt->execute();
-
-
-    
-	// Make query
-	$query = "SELECT * FROM usuario";
-	$result = mysqli_query($conn, $query);
-	$usuarios = [];
-	while($row = mysqli_fetch_assoc($result)) {
-		$usuarios[] = $row;
-	}
-	print_r($usuarios);
-
-	//Actualizar base de datos para meter imagen de usuario
-	if (isset($_FILES['uploadedFile'])) {
-
-    $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
-    $fileName = $_FILES['uploadedFile']['name'];
-    $fileSize = $_FILES['uploadedFile']['size'];
-
-    $fileNameCmps = explode(".", $fileName);
-    $fileExtension = strtolower(end($fileNameCmps));
-
-    $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif'];
-
-    if (in_array($fileExtension, $allowedExtensions)) {
-
-        $uploadFileDir = '../Vista/imagenes_perfil/';
-        $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
-        $dest_path = $uploadFileDir . $newFileName;
-
-        if (move_uploaded_file($fileTmpPath, $dest_path)) {
-            $_SESSION['message'] = 'Archivo subido correctamente.';
-        } else {
-            $_SESSION['message'] = 'Error al mover el archivo.';
-        }
-
-    } else {
-        $_SESSION['message'] = 'Solo imágenes (jpg, png, gif).';
-    }
-
-} else {
-    $_SESSION['message'] = 'No se seleccionó archivo.';
 }
+
+if ($contrasenia !== $verificacion) {
+    $_SESSION['error'] = "Las contraseñas no coinciden";
+    header("Location: ../Vista/index.php");
+    exit();
+}
+
+// Hash
+$contraseniaHash = password_hash($contrasenia, PASSWORD_DEFAULT);
+
+// Imagen
+$newFileName = null;
+
+if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK) {
+
+    $tmp = $_FILES['uploadedFile']['tmp_name'];
+    $name = $_FILES['uploadedFile']['name'];
+
+    $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+    $permitidas = ['jpg','jpeg','png','gif'];
+
+   if (in_array($ext, $permitidas)) {
+
+    $newFileName = uniqid() . "." . $ext;
+
+    //Ruta ABSOLUTA en el servidor
+    $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/APG-SO-main/Vista/imagenes_perfil/';
+    $ruta = $uploadDir . $newFileName;
+
+    if (!move_uploaded_file($tmp, $ruta)) {
+        die("Error al subir imagen");
+    }
+}
+}
+
+// Insertar
+$stmt = $conn->prepare("INSERT INTO usuario (usr_name, usr_pass, usr_email, usr_imagen) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssss", $nombre, $contraseniaHash, $mail, $newFileName);
+$stmt->execute();
+
+// ✔ NO crear sesión acá
+$_SESSION['success'] = "Usuario registrado correctamente";
+
+// Redirigir a login
+header("Location: ../Vista/login.php");
+exit();
+
 ?>
