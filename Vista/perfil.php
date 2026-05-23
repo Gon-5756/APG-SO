@@ -37,9 +37,9 @@ if (!isset($_SESSION['Session'])) {
                 </h1>
 
                 
-                <?php if (!empty($_SESSION['Session']['imagen'])): ?>
+                <?php if (!empty($_SESSION['Session']['uploadedFile'])): ?>
                     <img
-                        src="/APG-SO-main/Vista/imagenes_perfil/<?php echo $_SESSION['Session']['imagen']; ?>"
+                        src="/APG-SO/Vista/imagenes_perfil/<?php echo $_SESSION['Session']['uploadedFile']; ?>"
                         alt="Foto de perfil"
                         class="w-32 h-32 rounded-full mx-auto mt-4 object-cover"
                     >

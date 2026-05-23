@@ -12,6 +12,7 @@ $nombre = $_POST["usuario"] ?? '';
 $contrasenia = $_POST["contrasenia"] ?? '';
 $verificacion = $_POST["verificacion"] ?? '';
 $mail = $_POST["mail"] ?? '';
+$imagen = $_POST ["uploadedFile"] ?? '';
 
 // Validaciones
 if (empty($nombre) || empty($contrasenia) || empty($mail)) {
@@ -40,12 +41,12 @@ if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOA
     $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
     $permitidas = ['jpg','jpeg','png','gif'];
 
-   if (in_array($ext, $permitidas)) {
+if (in_array($ext, $permitidas)) {
 
     $newFileName = uniqid() . "." . $ext;
 
     //Ruta ABSOLUTA en el servidor
-    $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/APG-SO-main/Vista/imagenes_perfil/';
+    $uploadDir = $_SERVER['DOCUMENT_ROOT'] . '/APG-SO/Vista/imagenes_perfil/';
     $ruta = $uploadDir . $newFileName;
 
     if (!move_uploaded_file($tmp, $ruta)) {
